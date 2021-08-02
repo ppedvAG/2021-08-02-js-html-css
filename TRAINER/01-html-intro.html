@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>01-html-intro</title>
+    <style>
+/*         _selektor_  {
+            css-eigenschaft: wert-der-eigenschaft;
+        }
+        */
+        h2 {
+            font-size: 50px;
+            /* font-size: 50pt; */
+        }
+    </style>
+</head>
+<body>
+    <h1>01-html-intro</h1>
+    <pre>
+        SYNTAX IN HTML-DATEI
+        html-Dateien können folgende Inhalte beinhalten:
+        - html (alles, was in spitzen Klammer steht)
+        - js (was im Tag script steht)
+        - css (was im Tag style steht)
+
+
+        FORMATIERUNG IN HTML-DATEI
+        Nicht jede Formatierung in der HTML-Datei wird vom Browser wiederspiegelt:
+
+        - leere Zeichen um die Inhalte herum werden abgeschnitten
+        - neue Zeilen ignoriert
+
+        Ein Hinweis auf eine neue Zeile in HTML kann ein Leerzeichen zwischen den Elementen sein (siehe die spans)
+
+
+
+        HTML-ATTRIBUTE
+        stehen immer beim öffnenden HTML-Tag von einem HTML-Element
+        _attr-name_="_attr-wert_" 
+    </pre>
+
+    <h2>h2</h2>
+
+    <ol><li>   
+        li    
+    </li></ol>
+    <ul><li>li</li></ul>
+
+    <a href="google.com">anker(link)</a>
+
+    <p>paragraph</p>
+
+    <div>division</div>
+
+    <pre>
+        beachte Abstand zwischen dem ersten span-Paar und kein Abstand im zweiten span-Paar
+    </pre>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span><span>span</span>
+    
+
+
+    <img src="https://picsum.photos/200" alt="ein Bild">
+
+
+    <input id="inp1" type="text" name="" value="value von input">
+
+    <pre>
+        JS
+        Am einfachsten spricht man Elemente aus JS durch ihre IDs an.
+        Für die Elemente mit IDs werden sogar automatisch die gleichnamigen Variablen angelegt.
+    </pre>
+    <script>
+        console.log(inp1); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-HTML-INTRO-UEBUNG</title>
+</head>
+<body>
+    <h1>01-HTML-INTRO-UEBUNG</h1>
+    <pre>
+        Fragen Sie den Benutzer nach seinem Namen und begrüßen Sie ihn mit 'Hallo _benutzer-name_';
+
+        Hinweis 1:
+        Inhalte von Formular-Elementen (InteraktionsElemente) spricht man durch Attribut/Eigenschaft 'value' an.
+        Inhalte von allen anderen - unter anderem durch die Eigenschaft 'textContent'.
+
+        Hinweis 2:
+        Werte für Event-Attribute (onclick etc) - sind JS-Ausdrücke.
+    </pre>
+    <input id="inpName" type="text">
+    <input type="button" value="OK" onclick="pGreeter.textContent = inpName.value">
+    <p id="pGreeter"></p>
+</body>
+</html>

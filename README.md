@@ -28,10 +28,10 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 
 ## M000 | WARMING UP
 
-- [ ] Folien: [Greeter.pdf](m000/platzhalter.md)
+- [ ] Folien: Greeter.pdf
 - [ ] Demo:
 - [ ] Lab:
-- [ ] Commit:
+- [ ] Commit: [add foler](https://github.com/ppedvAG/2021-08-02-js-html-css/commit/631c457c457b0ea3984294141347b80b3c205b45)
   
 ## M001 | GETTING STARTED
 
@@ -46,3 +46,24 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 - [ ] Demo:
 - [ ] Lab:
 - [ ] Commit:
+
+AGENDA auf ppedv.de
+
+- Einführung in JavaScript
+- Grundlagen von Visual Studio Code
+- HTML Grundlagen lernen
+- Grundlagen von Cascading Style Sheets (CSS)
+- JavaScript: Grundlegende Sprachelemente
+- JavaScript: Kontrollstrukturen
+- JavaScript: Funktionen
+- JavaScript: Objekte und Objektmodell (DOM)
+- JavaScript: Zugriff auf HTML-Dokumente
+- JavaScript: Ereignisse
+- Formulare mit JavaScript
+- Cookies
+- HTML5 Vertiefung
+- CSS3 Vertiefung
+- Formulare in HTML erstellen
+- Medien in HTML integrieren
+- Layout Grundlagen (In Agenda: CSS3, Kollege nutzt jQuery UI, möglich wäre noch Bootstrap, Sass)
+- JavaScript APIs verwenden
