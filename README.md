@@ -38,7 +38,7 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 - [ ] Folien: DeinThema.pdf > Intro
 - [ ] Demo:
 - [ ] Lab:
-- [ ] Commit:
+- [ ] Commit: [m001 demo + aufgabe + lösung](https://github.com/ppedvAG/2021-08-02-js-html-css/commit/3189421db52e2d2d895b92118f8a72a0e95b24c9)
 
 ## MXXX | `name vom modul`
 

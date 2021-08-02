@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-CSS-CASCADE</title>
+    <style>
+        #group1 {
+            font-size: 20px;
+        }
+        #pGroup1 {
+            font-size: initial;
+        }
+        #group2 {
+            border: thick dashed yellowgreen;
+        }
+        #pGroup2 {
+            border: inherit;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>02-CSS-CASCADE</h1>
+    <pre>
+        CASCADE
+        - Manche Stile werden von manchen Elementen von ihren Elternelementen vererbt
+            - font-size z.B.
+        - Manche Stile nicht
+            - border z.B.
+        - Will man vererbte Stile auf Default-Stile zurücksetzen, dann den Wert 'initial';
+        - Will man die nicht automatisch vererbbaren doch vererben, dann den Wert 'inherit' setzen;
+        - bei relativen Größenangaben, kann Vererbung und die relative Größenberechnung zum mehrfachen Anwenden eines Wertes führen.
+
+        SPECIFICITY
+        - je spezifischer (konkreter) ein Selektor ist, desto stärker ist seine Spezifität.
+        - sie wird angegeben in der Syntax x.x.x. 
+        - Spezifität eines ID-Selektors ist z.B. 1.0.0. 
+        - Styles beim Attr 'style' sind stärker als die beim ID-Selektor
+    </pre>
+    <div id="group1">div ebene 1
+        <p>p in div ebene 1</p>
+        <div>div ebene 2
+            <div>div ebene 3
+                <p id="pGroup1">p in div ebene 3</p>
+            </div>
+        </div>
+    </div>
+    <div id="group2">div ebene 1
+        <p  id="pGroup2" style="width: 70%">p in div ebene 1</p>
+        <div>div ebene 2
+            <div>div ebene 3
+                <p>p in div ebene 3</p>
+            </div>
+        </div>
+    </div>
+    <div id="group3">div ebene 1
+        <p>p in div ebene 1</p>
+        <div>div ebene 2
+            <div>div ebene 3
+                <p>p in div ebene 3</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

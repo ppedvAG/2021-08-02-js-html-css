@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-CSS-SELECTORS</title>
+    <style>
+        /* -All-Elements-Selector */
+        * {
+            border: thin solid grey;
+        }
+        /* - Type-Selectors / Element-Selectors / Tag-Name-Selectors */
+        h1 {
+            font-size: 60px;
+        }
+        /* - ID-Selectors */
+        #p1 {
+            text-align: right;
+        }
+        /* - Class-Selectors */
+        .someClass {
+            border: thick solid red;
+        }
+        /* - Attribute-Selectors
+        Alle Elemente mit Attribut 'type'
+        Oder alle Element mit Attribut 'type' und dessen Wert 'text' */
+        [type] {
+            width: 300px;
+        }
+        [type="text"] {
+            height: 300px;
+        }
+        /* - Parent-Child-Selectors */
+        .someClass > p {
+            font-style: italic;
+        }
+        /* - Ancestor-Descendant-Selectors  */
+        .someClass p {
+            color: blue;
+        }
+        /* - Siblings-Selectors 
+        alle Paragraphen, die Geschwister von h2 sind */
+        h2 + p {
+            color: pink;
+        }
+        /* - Auflistungsselektor */
+        input, img {
+            outline: chocolate;
+            outline-width: 10px;
+            outline-style: dotted;
+        }
+        /* - Pseudo-Elements  */
+        ::first-letter {
+            font-style: italic;
+            font-size:larger;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        /* - Pseudo-Classes */
+        :hover {
+            /* bei manchen Elementen wurde die Schrift dreimal vergrößert, 
+            weil die Stile werden von html zu Kindelementen usw übernommen  */
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>02-CSS-SELECTORS</h1>
+    <pre>
+        - All-Elements-Selector
+        - Type-Selectors / Element-Selectors / Tag-Name-Selectors
+        - ID-Selectors
+        - Class-Selectors
+        - Attribute-Selectors
+        - Parent-Child-Selectors
+        - Ancestor-Descendant-Selectors 
+        - Siblings-Selectors
+        - Pseudo-Elements 
+        - Pseudo-Classes
+    </pre>
+
+    <h2>Heading range 2</h2>
+    <p id="p1">p1</p>
+    <div class="someClass">div ebene 1
+        <p>p in div ebene 1</p>
+        <div>div ebene 2
+            <div>div ebene 3
+                <p>p in div ebene 3</p>
+            </div>
+        </div>
+    </div>
+
+    <input type="text">
+    <input type="number">
+
+    <img src="https://picsum.photos/200" alt="" class="someClass">
+</body>
+</html>
