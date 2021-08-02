@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // anonyme Objekte
+        let o5 = {
+            prop1: 'wert von prop1',
+            method1: function () {
+                console.log('this in o5:>> ', this);
+            }
+        }
+        o5.method1(); //  {prop1: "wert von prop1", method1: ƒ}
+
+
+        
+        // anonyme Objekte ausführlich:
+        let o5_2 = {};
+        console.log('o5_2 :>> ', o5_2);
+        o5_2.prop1 = 'wert von prop1';
+        console.log('o5_2.prop1 :>> ', o5_2.prop1); // 'wert von prop1'
+    </script>
+</body>
+</html>

@@ -40,13 +40,21 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 - [ ] Lab:
 - [ ] Commit: [m001 demo + aufgabe + lösung](https://github.com/ppedvAG/2021-08-02-js-html-css/commit/3189421db52e2d2d895b92118f8a72a0e95b24c9)
 
-## MXXX | `name vom modul`
+## M002 | CSS SELECTORS, CASCADE, SPECIFICITY
 
 - [ ] Folien:
 - [ ] Demo:
-- [ ] Lab:
+- [ ] Lab: <https://flukeout.github.io/>
 - [ ] Commit:
 
+## M003 | JS SCOPING, VARIABLES
+
+- [x] Folien: JAVASCRIPT.pdf > essentials, variables
+- [x] Demo: [03-js-scopes.variables.html](TRAINER/03-js-scopes-variables.html)
+- [x] Lab: [03-js-flow-uebung.html](TRAINER/03-js-flow-uebung.html)
+- [x] Commit: [m003 demo + aufgabe]()
+
+## M004 | 
 AGENDA auf ppedv.de
 
 - Einführung in JavaScript
