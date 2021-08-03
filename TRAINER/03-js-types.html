@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* 
+        parseFloat()
+        parseInt()
+        wie erkennt man am number, ob da double / float / int ist? */
+
+        function giveType(...args) {
+            for (const arg of args) {                
+                console.log(`typeof ${arg} :>> `, typeof arg);
+            }
+        }
+        giveType(44, null, undefined, Number('3'), ()=>{}, {}, [], 'l', 2222n, 0b01010)
+        /* 
+typeof 44 :>>  number
+typeof null :>>  object
+typeof undefined :>>  undefined
+typeof 3 :>>  number
+typeof ()=>{} :>>  function
+typeof [object Object] :>>  object
+typeof  :>>  object
+typeof l :>>  string
+typeof 2222 :>>  bigint
+typeof 10 :>>  number */
+    </script>
+</body>
+</html>

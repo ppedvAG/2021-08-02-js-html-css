@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-JS-FUNCTIONS</title>
+</head>
+
+<body>
+    <h1>06-JS-FUNCTIONS</h1>
+    <pre>
+        RETURN
+        - es muss nicht deklariert werden, welchen Datentyp eine Funktion zurückgibt
+    </pre>
+    <script>
+        // Optionale Werte?
+        // function test1(param1, param2, param3?) { } // The '?' modifier can only be used in TypeScript files.javascript
+        
+        // Eine Alternative zu Optionalen Params
+        function createName(firstName, lastName, middleName) { 
+            let fullName = ''
+            if (middleName == undefined) {
+                fullName = firstName + ' ' + lastName;                
+                console.info('kein middleName :>> ');
+            } else {
+                fullName = firstName + ' ' + middleName + ' ' + lastName;                
+            }
+            console.log('fullName :>> ', fullName);
+        }
+        createName('Leonardo', 'Caprio', 'di');
+        createName('Jennifer', 'Lopez');
+
+
+
+        // - params[] in JS?
+        function anyParams(...args) {
+            console.log('args :>> ', args); // alles wird in ein Array eingepackt
+        }
+        anyParams('ein arg')
+        anyParams('ein arg', 'zweites arg')
+        anyParams(['ein arg', 'zweites arg'])
+
+        function giveType(...args) {
+            for (const arg of args) {                
+                console.log(`typeof ${arg} :>> `, typeof arg);
+            }
+        }
+        giveType(44, null, undefined, Number('3'), ()=>{}, {}, [], 'l', 2222n, 0b01010)
+        /* 
+typeof 44 :>>  number
+typeof null :>>  object
+typeof undefined :>>  undefined
+typeof 3 :>>  number
+typeof ()=>{} :>>  function
+typeof [object Object] :>>  object
+typeof  :>>  object
+typeof l :>>  string
+typeof 2222 :>>  bigint
+typeof 10 :>>  number */
+
+
+
+        // arguments
+        function showArguments() {
+            console.log('arguments :>> ', arguments);
+        }
+        showArguments(); //  Arguments [callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+        function showCallee(arg1, arg2) {
+            console.log('showCallee is called');
+            // arguments.callee('arg1', 'arg2'); // führt zur endlosen Schleife
+            console.log('arguments :>> ', arguments);
+        }
+        showCallee('a1', 'a2');
+        /* 
+        Arguments(2) ["a1", "a2", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+            0: "a1"
+            1: "a2"
+            callee: ƒ showCallee(arg1, arg2)
+            length: 2
+            Symbol(Symbol.iterator): ƒ values()
+            [[Prototype]]: Object 
+        */
+
+
+        //  new.target
+        function showNewTarget() {
+            console.log('new.target :>> ', new.target); 
+        }
+        showNewTarget(); // undefined
+        // mit new wird im objekt new.target die Methode selbst abgelegt.
+        new showNewTarget(); // ƒ showNewTarget() { console.log('new.target :>> ', new.target); }
+
+        
+         // Wenn eine Funktion mit new aufgerufen wird, dann wird durch sie eine Instanz einer Klasse angelegt
+         class SmallNumber {
+             MAX_VALUE = 10;
+             MIN_VALUE = -10;            
+         }
+         function SmallNumberFct (arg) {
+             if (!new.target) {
+                 console.log('in !new.target');
+                 return new SmallNumber();
+             } else {
+                 if (arg <= 10 && arg >= -10) {
+                    Number(arg);
+                 } else {
+                     console.log('out of bounds exeption');
+                 }                 
+             }
+         }
+         let mySmallNumber = new SmallNumberFct();
+         console.log('mySmallNumber :>> ', mySmallNumber);
+         //  let mySmallNumber2 = SmallNumberFct(5);
+        //  console.log('mySmallNumber2 :>> ', mySmallNumber2);
+         //  let mySmallNumber3 = SmallNumberFct(15);
+        //  console.log('mySmallNumber3 :>> ', mySmallNumber3);
+                /* Docs:
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target
+
+        todo #2
+         */
+    </script>
+</body>
+
+</html>
