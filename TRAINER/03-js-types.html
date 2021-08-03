@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>03-JS-TYPES</title>
 </head>
-<body>
-    <script>
-        /* 
-        parseFloat()
-        parseInt()
-        wie erkennt man am number, ob da double / float / int ist? */
 
+<body>
+    <h1>03-JS-TYPES</h1>
+    <pre>
+        PRIMITIVES
+        7 primitiven
+
+        TYPEOF
+
+        NUMBERS
+
+        WRAPPING OBJECTS
+
+        INSTANCEOF
+    </pre>
+
+    <script>
+        // TYPEOF
+        console.info('\n\n TYPEOF')
         function giveType(...args) {
-            for (const arg of args) {                
+            for (const arg of args) {
                 console.log(`typeof ${arg} :>> `, typeof arg);
             }
         }
-        giveType(44, null, undefined, Number('3'), ()=>{}, {}, [], 'l', 2222n, 0b01010)
-        /* 
+        giveType(44, null, undefined, Number('3'), () => { }, {}, [], 'l', 2222n, 0b01010)
+        /*
 typeof 44 :>>  number
 typeof null :>>  object
 typeof undefined :>>  undefined
@@ -30,6 +43,76 @@ typeof  :>>  object
 typeof l :>>  string
 typeof 2222 :>>  bigint
 typeof 10 :>>  number */
+
+        function checkType(variable) {
+            return typeof variable;
+        }
+        function isString(variable) {
+            return typeof variable === 'string';
+        }
+        console.log('isString(4) :>> ', isString(4)); // false
+        console.log("isString('r') :>> ", isString('r')); // true
+
+
+
+        // NUMBERS
+        // All JavaScript numbers are 64-bit floating-point numbers.
+        console.info('\n\n NUMBERS')
+        let n1 = 5;
+        let n2 = 5.5;
+        let n3 = 5.555;
+        let str1 = '5';
+        let str2 = '5.5';
+
+        // string zu number (parsing)
+        console.info('\n parsing')
+        let nFromStr1 = parseInt(str1);
+        console.log('nFromStr1 :>> ', nFromStr1); // 5
+        let nFromStr2 = parseFloat(str2);
+        console.log('nFromStr2 :>> ', nFromStr2); // 5.5
+        console.log('typeof nFromStr2 :>> ', typeof nFromStr2); // number
+        let nFromStrX = parseInt(str2);
+        console.log('nFromStrX :>> ', nFromStrX); // 5
+
+        // ist ein number, ouble / float / int ?
+        console.info('\n is int?')
+        function isInt(n) {
+            return n % 1 === 0;
+        }
+        console.log('isInt(n1) :>> ', isInt(n1)); // true
+        console.log('isInt(n2) :>> ', isInt(n2)); // false
+        console.log('Number.isInteger(n3) :>> ', Number.isInteger(n3)); // false
+
+
+        //  WRAPPING OBJECTS
+        console.info('\n\n WRAPPING OBJECTS')
+
+        // Number
+        console.info('\n Number')
+
+        // An object that represents a number of any kind. 
+        let nObj1 = new Number(0x6FA);
+        console.log('nObj1 :>> ', nObj1);
+        console.log('typeof nObj1 :>> ', typeof nObj1); // object
+        let n4 = 6.666;
+
+        // Methoden von Wrapping-Objekten können auch bei Primitiven angewendet werden
+        // (method) Number.toFixed(fractionDigits?: number): string
+        // fractionDigits: Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.
+        // Returns a string representing a number in fixed-point notation.
+        let n4Formatted = n4.toFixed(1);
+        console.log('n4Formatted :>> ', n4Formatted); // 6.7
+        n4Formatted = n4.toFixed();
+        console.log('n4Formatted :>> ', n4Formatted); // 7
+
+
+        // INSTANCEOF
+        console.info('\n\n INSTANCEOF');
+        console.log('n4 instanceof Number :>> ', n4 instanceof Number); // false
+        console.log('nObj1 instanceof Number :>> ', nObj1 instanceof Number); // true
+
+
     </script>
 </body>
+
 </html>
