@@ -52,9 +52,10 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 - [x] Folien: JAVASCRIPT.pdf > essentials, variables
 - [x] Demo: [03-js-scopes.variables.html](TRAINER/03-js-scopes-variables.html)
 - [x] Lab: [03-js-flow-uebung.html](TRAINER/03-js-flow-uebung.html)
-- [x] Commit: [m003 demo + aufgabe]()
+- [x] Commit: [m003 demo + aufgabe](https://github.com/ppedvAG/2021-08-02-js-html-css/commit/62bd57ffefa641cf06c58f5cfe12abbec29ad83d)
 
-## M004 | 
+## M004 | DOM
+
 AGENDA auf ppedv.de
 
 - Einführung in JavaScript
