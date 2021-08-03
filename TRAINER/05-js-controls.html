@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-JS-CONTROLS</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h1>05-JS-CONTROLS</h1>
+    <pre>
+        &&
+        ||
+        for of
+        for in
+        foreach()
+    </pre>
+    <script>
+        let wochentage = [
+            'montag',
+            'dienstag',
+            'mittwoch',
+            'donnerstag',
+            'freitag',
+            'samstag',
+            'sonntag'
+        ]
+        gebeWochentag = () => {
+            return Math.floor(Math.random() * 6);
+        }
+        let wochentagNummer = gebeWochentag();
+        // switch
+        // Szenario
+        switch (wochentage[wochentagNummer]) {
+            case 'montag':
+                // anweisungen
+                console.log(`am Montag gibt es Pommes mit Gulasch`);
+                break;
+            case 'dienstag':
+                console.log(`am Dienstag gibt es Pizza`);
+                break;
+            case 'mittwoch':
+                console.log(`am Mittwoch gibt es Pasta Carbonara`);
+                break;
+            case 'donnerstag':
+                console.log(`am Donnerstag gibt es Polenta mit Pilzsoße`);
+                break;
+            case 'freitag':
+                console.log(`am Freitag gibt es Schweinhaxe`);
+                break;
+            default:
+                console.log(`am ${wochentage[wochentagNummer]} ist die Kantine zu.`);
+                break;
+        }
+        /*       
+        todo #1 
+        Wenn für Case 'Dienstag' auch noch Anweisungen für 'Mittwoch' ausgeführt werden müssen,
+        dann kann break weggelassen werden.
+        
+        case 'dienstag' : 
+        console.log(`am Dienstag gibt es Pizza`);
+        break;
+        case 'mittwoch' : 
+        console.log(`am Mittwoch gibt es Pasta Carbonara`);
+        break; */
+
+
+
+
+        // &&
+        true && console.log('anweisung in true &&..')
+        false && console.log('anweisung in false &&..')
+        // ||
+        console.log('left' || 'right');
+        console.log(false || 'right');
+
+        /* 
+        Iterieren Sie das Array durch
+        Geben Sie bei jeder Iteration die Zahl aus dem Array als ein LI in einer UL aus
+        Die positiven Zahlen werden grün dargestellt, die negativen rot
+        Einige Möglichkeiten, die Stile zuzuweisen:
+        - element.style.color = 'colorName';
+        - element.classList.add('classMitColorProp');
+        - im html-String: <li style="color: ..">..
+        */
+
+        let kontostand = [500, -30, 700, -150, 2000];
+
+        // for of - enumerables
+        // will man mit der iterator-Variable die Werte nicht auslesen, sondern zuweisen,
+        // dann darf sie keine Konstante sein
+        for (const iterator of document.querySelectorAll('*')) {
+            console.log('iterator.nodeName :>> ', iterator.nodeName);            
+        }
+
+
+        // for in - not enumerables
+        for (const key in navigator) {
+            // if (Object.hasOwnProperty.call(navigator, key)) { // die Bedingung ist nötig, wenn man keine vererbten Props ausgeben möchte
+                console.log('Objectkey :>> ', key);
+                const element = navigator[key];
+                console.log('Objectvalue :>> ', element);                
+            // }
+        }
+        console.log('navigator :>> ', navigator);
+
+        // foreach()
+        let summe = 0;
+        kontostand.forEach(element => {            
+            summe += element;                      
+        });
+        console.log('summe :>> ', summe);
+
+        let myArray = new Array(4);
+        myArray = new Array(3,4,5,6);
+        console.log('myArray[0] :>> ', myArray[0]);
+        console.log('myArray[5] :>> ', myArray[5]);
+        myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000] = 8;
+        console.log('myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000] :>> ', myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000]);
+    </script>
+</body>
+
+</html>
