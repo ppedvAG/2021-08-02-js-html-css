@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-CSS-GRID</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            font-size: 2em;
+        }
+        #container {
+            display: grid;
+            grid-template-columns: 15% auto 15%;
+            grid-template-rows: 10% auto 10%;
+            grid-gap: 10px;
+            width: 100%;
+            height: 100%;            
+        }
+        header {
+            grid-column: 1 / 4;
+            /* grid-column-end: 4; */
+            grid-row: 1 / 2;
+            background-color: bisque;
+            display:grid;
+            grid-template-columns: 60% auto;            
+        }
+        h1 {
+            margin: 0;           
+        }
+        nav {
+            background-color: coral;
+        }
+        section {
+            background-color: deepskyblue;
+        }
+        aside {
+            background-color: greenyellow;
+        }
+        footer {
+            background-color: khaki;
+            grid-column: 1 / 4;
+            grid-row: 3 / 4;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>07-CSS-GRID</h1>
+            <p>header</p>        
+        </header>
+        <nav>nav</nav>
+        <section>section
+            <article>article</article>
+        </section>
+        <aside>aside</aside>
+        <footer>footer</footer>
+    </div>
+</body>
+
+</html>
