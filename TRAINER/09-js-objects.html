@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-JS-OBJECTS</title>
+</head>
+<body>
+    <h1>09-JS-OBJECTS</h1>
+    <pre>
+        - Konstruktoren werden separat und in Form von Funktionen angelegt
+        - Objekte sind dynamisch, sie können nach dem Instanziieren erweitert werden
+        - auf die richtige Setzung bei 'this' muss geachtet werden
+        - in den letzten JS-Versionen und in den modernen Frameworks werden nur anonyme Objekte genutzt. 
+            Alleinstehende Konstruktoren & Co sind durch Klassen ersetzt.
+    </pre>
+    <script>
+        // anonyme Objekte
+        let o5 = {
+            prop1: 'wert von prop1',
+            method1: function () {
+                console.log('this in o5:>> ', this);
+            }
+        }
+        o5.method1(); //  {prop1: "wert von prop1", method1: ƒ}
+
+        
+        // Objekte sind dynamisch, neue Werte können nach dem Instanziieren hinzugefügt werden:
+        let o5_2 = {};
+        console.log('o5_2 :>> ', o5_2);
+        o5_2.prop1 = 'wert von prop1';
+        console.log('o5_2.prop1 :>> ', o5_2.prop1); // 'wert von prop1'
+
+
+        // Konstruktoren in älteren JS-Versionen
+        function Person(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+        const myPerson = new Person('vn', 'ln');
+        console.log('myPerson.firstName :>> ', myPerson.firstName); // vn
+
+        // schützt Konstante die Props vorm Schreiben?
+        // nein
+        myPerson.firstName = 'Max'; // 'Max'
+        console.log('myPerson.firstName :>> ', myPerson.firstName);
+
+        // schützt Konstantevorm vorm Hinzufügen von neuen Props ?
+        // nein
+        myPerson.changeName = (newName) => {
+            this.firstName = newName; // ist falsch, siehe unten
+            console.log('name changed');
+        }
+        // const schützt nicht vor dem dynamischen Verändern der Instanz
+        myPerson.changeName('nn'); // name changed
+        // Kein Binding von this zu Person
+        console.log('myPerson.firstName :>> ', myPerson.firstName); // Max
+        
+
+        // const schützt nur vorm Zuweisen von neuen Werten der Variable selbst
+        // myPerson = {firstName: 'vn', lastName: 'ln'}; // Uncaught TypeError: Assignment to constant variable.
+        console.log('myPerson :>> ', myPerson); 
+        
+
+        // für Erweiterungsschutz kann Object.freeze() genutzt werden
+        Object.freeze(myPerson);
+        myPerson.birthDay = '2001-05-20';
+        console.log('myPerson.birthDay :>> ', myPerson.birthDay); // undefined, ohne freeze: '2001-05-20'
+
+
+        // Destrukturierung        
+        let { changeName } = myPerson;
+        changeName('another name');
+        console.log('myPerson.firstName :>> ', myPerson.firstName); // Max
+        // Kein Binding von this zu Person
+        console.log('window.firstName :>> ', window.firstName); // another name
+        console.log('this.firstName :>> ', this.firstName); // another name
+
+
+        // Anbinden von this an das Objekt
+        console.log('Person :>> ', Person);
+        changeName = myPerson.changeName.bind(myPerson); // Binding funktioniert nicht
+        // 1. myPerson ist eine Instanz, kein Konstruktor
+        // 2. changeName würde nach der Instanziierung zu myPerson hinzugefügt 
+        // 3. bei Pfeilfunktionen kann this nicht umgebunden werden
+        changeName('super new name');
+        console.log('myPerson.firstName :>> ', myPerson.firstName); // Max
+
+        
+        // Binding mit klassischer Funktion
+        // funktioniert
+        let myPerson1 = new Person('vn1', 'ln1');
+        myPerson1.changeLastName = function (newLastName) {
+            this.lastName = newLastName;
+            console.log('changeLastName called');
+        }
+        myPerson1.changeLastName('new last name');
+        console.log('myPerson1.lastName :>> ', myPerson1.lastName); // new last name
+        
+
+        // bleibt this-Binding nach Destructuring?
+        // ohne bind() nicht, nur mit bind()
+        let {changeLastName} = myPerson1;
+        changeLastName('last change');
+        console.log('myPerson1.lastName :>> ', myPerson1.lastName); // new last name
+
+        changeLastName = myPerson1.changeLastName.bind(myPerson1);
+        changeLastName('last change');
+        console.log('myPerson1.lastName :>> ', myPerson1.lastName); // last change
+
+    </script>
+</body>
+</html>
