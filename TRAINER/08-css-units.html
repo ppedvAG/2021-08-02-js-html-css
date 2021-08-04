@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08-CSS-UNITS</title>
+    <style>
+        div {
+            border: medium solid lightblue;
+        }
+
+        #pixel {
+            font-size: 10px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        #prozent {
+            /* 10% von font-size beim elternelement */
+            font-size: 10%;
+            /* hängt von breite des elternelements ab */
+            padding: 10%;
+            /* hängt von seitenlängen ab */
+            border-radius: 10%;
+        }
+
+        #test {
+            font-size: 20px;
+        }
+        /* 1em ist gleich font-size vom Elternelement */
+        #em {
+            font-size: 1.5em;
+            padding: 1.5em;
+            border-radius: 1.5em;
+        }
+        html {
+            font-size: 30px;
+        }
+        /* 1rem ist gleich font-size von Root-Element */
+        #rem {
+            font-size: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+        }
+        #vw {
+            font-size: 1vw;
+            padding: 1vw;
+            border-radius: 1vw;
+        }
+        #vh {
+            font-size: 1vh;
+            padding: 1vh;
+            border-radius: 1vh;
+        }
+        #vmin {
+            font-size: 1vmin;
+            padding: 1vmin;
+            border-radius: 1vmin;
+        }
+        #vmax {
+            font-size: 1vmax;
+            padding: 1vmax;
+            border-radius: 1vmax;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>08-CSS-UNITS</h1>
+    <div id="pixel">
+        <h2>pixel</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, tempora!</p>
+    </div>
+    <hr>
+    <div id="prozent">
+        <h2>prozent</h2>
+        <p>Reiciendis perferendis quia sapiente neque. Enim exercitationem ut cum a.</p>
+    </div>
+    <hr>
+    <div id=test>
+        <div id="em">
+            <h2>em</h2>
+            <p>Doloremque animi ratione alias, in dicta perspiciatis autem sit aliquid!</p>
+        </div>
+    </div>
+    <hr>
+    <div id="rem">
+        <h2>rem</h2>
+        <p>Doloremque, magni illum. Tenetur quisquam aspernatur aliquid? Fugiat, debitis perferendis?</p>
+    </div>
+    <hr>
+    <div id="vw">
+        <h2>vw</h2>
+        <p>Omnis consectetur, harum earum vero ad excepturi ab minus libero?</p>
+    </div>
+    <hr>
+    <div id="vh">
+        <h2>vh</h2>
+        <p>A modi necessitatibus repudiandae, laboriosam autem blanditiis nihil! Quos, voluptas?</p>
+    </div>
+    <hr>
+    <div id="vmin">
+        <h2>vmin</h2>
+        <p>Animi aspernatur ea totam excepturi ipsam recusandae maiores repudiandae at.</p>
+    </div>
+    <hr>
+    <div id="vmax">
+        <h2>vmax</h2>
+        <p>Assumenda exercitationem quia quibusdam dolores, et itaque laboriosam vel architecto!</p>
+    </div>
+    <hr>
+</body>
+
+</html>
