@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11-JS-FOR-HTMLELEMENTS</title>
+</head>
+
+<body>
+    <h1>11-JS-FOR-HTMLELEMENTS</h1>
+    <pre>
+        - new Image()
+        - HTMLTableSectionElement.insertRow(index) und deleteRow(index) und HTMLTableRowElement.insertCell(index) und deleteCell(index)
+    </pre>
+    <h2>HTML IMAGE ELEMENT</h2>
+    <div id="placeForImg"></div>
+
+    <h2>HTML TABLE ELEMENT</h2>
+    <table id="myTable"></table>
+
+    <table>
+        <thead id="myTHead"></thead>
+        <tbody id="myTBody"></tbody>
+        <tfoot id="myTFoot"></tfoot>
+    </table>
+
+    <h3>Übung</h3>
+    <pre>
+        siehe todo-app > todos.html
+    </pre>
+
+    <script>
+        // ========================================
+        // IMAGE
+        let img2 = new Image();
+        img2.src = 'https://picsum.photos/200';
+        placeForImg.appendChild(img2);
+        console.log('img2 :>> ', img2);
+
+        // Konstruktoren gibt es nicht für alle HTML Elemente
+        // let p = new Paragraph(); // ReferenceError: Paragraph is not defined
+
+
+
+        // ========================================
+        // TABLE
+        // tbody wurde automatisch angelegt und erst dann 'tr';
+        // aber tr kann nicht nur tbody sondern auch thead und tfoot hinzugefürt werden
+        // es wäre richtiger, tr diesen Elementen hinzuzufügen
+        // die Methode fügt neues tr hinzu und gibt dieses tr auch zurück
+        let newRow = myTable.insertRow();
+        // analog auch bei insertCell();
+        let newCell = newRow.insertCell();
+
+        // Variante mit tbody, thead und tfoot
+        let newRow2 = myTBody.insertRow();
+        let newCell2 = newRow2.insertCell();
+
+        // Hinzufügen von Rows und Cells an einer gewünschten Stelle
+        // let newRow3 = myTBody.insertRow(2); // Uncaught DOMException: Failed to execute 'insertRow' on 'HTMLTableSectionElement': The provided index (2 is outside the range [-1, 1].
+        let newRow3 = myTBody.insertRow(1); // Uncaught DOMException: Failed to execute 'insertRow' on 'HTMLTableSectionElement': The provided index (2 is outside the range [-1, 1].
+        let newCell3 = newRow3.insertCell(-1); // -1 ist default, das Gleiche wie ohne Index - insertCell()
+        newCell3.innerText = 'new cell 3';
+
+        let newRow4 = myTBody.insertRow(0); // 0 - als erste Row
+        let newCell4 = newRow4.insertCell(-1); // -1 - als letzte Cell
+        newCell4.innerText = 'new cell 4';
+
+        let newRow5 = myTBody.insertRow(1); // 1: im aktuellen range [-1; 2] an der zweiten Stelle
+        let newCell5 = newRow5.insertCell(-1); // 
+        newCell5.innerText = 'new cell 5';
+
+        // über rowIndex vom letzten Kindelement von TBody lässt sich Index für eine neue Row ermitteln
+        let autoIndex = myTBody.lastChild.rowIndex;
+        console.log('autoIndex :>> ', autoIndex);
+
+
+    </script>
+</body>
+
+</html>
