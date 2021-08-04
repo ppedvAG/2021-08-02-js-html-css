@@ -58,29 +58,31 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 
 ## M005 | JS FLOW CONTROLS
 
+## M006 | DATA STRUCTURES
 
+## M007 | CSS GRID
 
-## M006
-## M007
-## M008
+## M008 | CSS UNITS
+
+## M009 | JS OBJECTS
 
 AGENDA auf ppedv.de
 
-- Einführung in JavaScript
-- Grundlagen von Visual Studio Code
-- HTML Grundlagen lernen
-- Grundlagen von Cascading Style Sheets (CSS)
-- JavaScript: Grundlegende Sprachelemente
-- JavaScript: Kontrollstrukturen
-- JavaScript: Funktionen
-- JavaScript: Objekte und Objektmodell (DOM)
-- JavaScript: Zugriff auf HTML-Dokumente
-- JavaScript: Ereignisse
-- Formulare mit JavaScript
-- Cookies
-- HTML5 Vertiefung
-- CSS3 Vertiefung
-- Formulare in HTML erstellen
-- Medien in HTML integrieren
-- Layout Grundlagen (In Agenda: CSS3, Kollege nutzt jQuery UI, möglich wäre noch Bootstrap, Sass)
-- JavaScript APIs verwenden
+- [x] Einführung in JavaScript
+- [x] Grundlagen von Visual Studio Code
+- [x] HTML Grundlagen lernen
+- [x] Grundlagen von Cascading Style Sheets (CSS)
+- [x] JavaScript: Grundlegende Sprachelemente
+- [x] JavaScript: Kontrollstrukturen
+- [x] JavaScript: Funktionen
+- [x] JavaScript: Zugriff auf HTML-Dokumente
+- [ ] JavaScript: Objekte und Objektmodell (DOM)
+- [ ] JavaScript: Ereignisse
+- [ ] Formulare mit JavaScript
+- [ ] Formulare in HTML erstellen
+- [ ] HTML5 Vertiefung
+- [ ] Medien in HTML integrieren
+- [ ] CSS3 Vertiefung
+- [ ] Layout Grundlagen (In Agenda: CSS3, Kollege nutzt jQuery UI, möglich wäre noch Bootstrap, Sass)
+- [ ] Cookies
+- [ ] JavaScript APIs verwenden
