@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12-JS-STRUCTURES</title>
+</head>
+
+<body>
+    <h1>12-JS-STRUCTURES</h1>
+    <pre>
+        JS Structures
+            Objects - siehe 09-js-objects.html
+            Arrays, assoziative Arrays
+            Maps
+            Sets
+        DOM Collections and Lists
+            HTMLCollection
+            NodeList
+        DOM dynamic fields
+            document.images, 
+            document.forms etc
+    </pre>
+
+    <img src="https://picsum.photos/id/237/200/300" alt="">
+    <img src="https://picsum.photos/id/236/200/300" alt="" id="middleImg">
+    <img src="https://picsum.photos/id/235/200/300" alt="">
+
+    <div id="divId">division mit id</div>
+
+    <p class="pClass">p1</p>
+    <p class="pClass">p2</p>
+    <p class="pClass">p3</p>
+    <svg class="pClass"></svg>
+
+
+    <script>
+        // =================================
+        // JS STRUCTURES
+
+        //#region ARRAY
+        // ARRAY
+        let myArray = new Array(4);
+        myArray = new Array(3, 4, 5, 6);
+        console.log('myArray[0] :>> ', myArray[0]);
+        console.log('myArray[5] :>> ', myArray[5]);
+        myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000] = 8;
+        console.log('myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000] :>> ', myArray[2000000000000000000000000000000000000000000000000000000000000000000000000000000000000]);
+
+
+        // foreach()
+        // iteriert das Array, ohne dieses zu verändern
+        let unknown = myArray.forEach((el) => {
+            el = el + 1;
+            console.log('el :>> ', el);
+            // Sie wird nicht für Elemente aufgerufen, die gelöscht oder nicht initialisiert wurden (d. h. Arrays mit leeren Elementen).
+            // maArray[5] ist nicht initialisiert
+            return el;
+        })
+        console.log('myArray :>> ', myArray); // ungeändert
+        console.log('unknown :>> ', unknown); // undefined
+
+
+        // map();
+        // interiert das Array, ohne dieses zu verändern
+        // gibt ein neues Array zurück mit geänderten Werten
+        // wie foreach() hört die Iteration auf, falls im Array undefined auftaucht
+        unknown = myArray.map((el) => {
+            el = el + 1;
+            console.log('el :>> ', el);
+            return el;
+        })
+        console.log('myArray :>> ', myArray); // (4) [3, 4, 5, 6, 2e+84: 8]
+        console.log('unknown :>> ', unknown); // (4) [4, 5, 6, 7]
+
+
+        // Associative ARRAY
+        // Befüllen von Arrays durch String-Keys ist möglich, weil Arrays von Object abgeleitet sind
+        let associativeArray = new Array();
+        associativeArray["firstName"] = 'vn';
+        associativeArray["lastName"] = 'ln';
+        console.log('associativeArray :>> ', associativeArray);
+        // ist firstName auch über Punkt-Notation erreichbar?
+        // ja
+        console.log('associativeArray.firstName :>> ', associativeArray.firstName); // vn
+
+        let testObject = new Object();
+        testObject["firstName"] = 'vn';
+        testObject["lastName"] = 'ln';
+        console.log('testObject :>> ', testObject);
+
+        // Wie verhalten sich ein assArray und ein Objekt bei enumerable-iteration
+        for (const iterator of associativeArray) { // läuft nicht, weil die Länge vom Array ist 0
+            console.log('iterator :>> ', iterator);
+        }
+        console.log('associativeArray.keys() :>> ', associativeArray.keys()); // Array Iterator {}
+
+        // Kann man durch das assArray mit dem for..in Iterator durchlaufen?
+        // ja
+        for (const key in associativeArray) {
+            if (Object.hasOwnProperty.call(associativeArray, key)) {
+                const element = associativeArray[key];
+                console.log('element :>> ', element);
+            }
+        }
+
+        // for (const iterator of testObject) { // Uncaught TypeError: testObject is not iterable
+        // console.log('iterator :>> ', iterator);            
+        // }
+
+
+        // Weitere Arrays:
+        let int8Array = new Int8Array(3);
+        console.log('int8Array :>> ', int8Array); // Int8Array(3) [0, 0, 0]
+        console.log('int8Array.BYTES_PER_ELEMENT :>> ', int8Array.BYTES_PER_ELEMENT); // 1
+        int8Array[0] = 42;
+        console.log('int8Array[0] :>> ', int8Array[0]); // 42
+        int8Array[1] = 42.456345634656745674567342341;
+        console.log('int8Array[1] :>> ', int8Array[1]); // 42
+
+        // Ähnlich: Int16Array, Int32Array, Int64Array        
+
+
+        // SPREAD OPERATOR ...
+        // zum Kopieren von einem Array
+        // Syntax: muss immer in Kombination mit eckigen Klammern genutzt werden
+        let myArray2 = ['a', 'b', 'c'];
+        let myLetters = [...myArray2];
+        console.log('myLetters :>> ', myLetters); // (3) ["a", "b", "c"]
+
+        // zum Destrukturieren von einem Array
+        let [firstElement, ...others] = myLetters;
+        console.log('firstElement :>> ', firstElement); // a
+        console.log('others :>> ', others); // (2) ["b", "c"]
+
+        // zum Umwandeln einer iterierbaren Struktur zu einem Array
+        console.log('document.images :>> ', document.images); // HTMLCollection(3) [img, img, img]
+        let images = [...document.images];
+        console.log('images :>> ', images); // (3) [img, img, img]
+
+        console.clear();
+        //#endregion ARRAY
+
+
+        //#region SET
+        console.log('\n\n SET');
+        let myArray3 = [2, 3, 5, 2, 3, 1];
+
+        // Set(iterable?: Iterable<any>): Set<any>
+        let mySet = new Set(myArray3);
+        console.log('mySet :>> ', mySet); // Set(4) {2, 3, 5, 1}
+
+        // mit has() wird geprüft, ob ein Element beinhaltet ist
+        console.log('mySet.has(3) :>> ', mySet.has(3)); // true
+
+        console.log('mySet.size :>> ', mySet.size); // 4  
+
+        /* 
+        Alle Props: 
+        add: ƒ add()
+        clear: ƒ clear()
+        constructor: ƒ Set()
+        delete: ƒ delete()
+        entries: ƒ entries()
+        forEach: ƒ forEach()
+        has: ƒ has()
+        keys: ƒ values()
+        size: (...)
+        values: ƒ values() */
+
+        console.clear();
+
+        //#endregion SET
+
+        
+        //#region MAP
+        console.log('\n\n MAP');
+
+        // gedacht ist für key-value-Paare, wo keys und values beliebige Datentypen sein können
+        let myMap = new Map();
+        console.log('myMap :>> ', myMap);
+        /* 
+        Props und Methods
+        clear: ƒ clear()
+        constructor: ƒ Map()
+        delete: ƒ delete()
+        entries: ƒ entries()
+        forEach: ƒ forEach()
+        get: ƒ ()
+        has: ƒ has()
+        keys: ƒ keys()
+        set: ƒ ()
+        size: (...)
+        values: ƒ values() */
+
+        myMap.set('2021-08-04', 'Wetterbeschreibung 04.08');
+        myMap.set('2021-08-03', 'Wetterbeschreibung 03.08');
+        console.log('myMap :>> ', myMap);
+        // sind Maps iterierbar wie indexierte Objekte?
+        // ja
+        for (const iterator of myMap) {
+            console.log('iterator :>> ', iterator); // (2) ["2021-08-04", "Wetterbeschreibung 04.08"], ein Array
+        }
+        console.log('myMap.size :>> ', myMap.size); // 2      
+        
+        
+        // Sind Paare von verschiedenen Zusammensetzungen in einem Map möglich?
+        // ja
+        myMap.set(new Date(), {
+            wolken: 'stark',
+            sonne: 'wenig'
+        })
+        console.log('myMap :>> ', myMap);
+        console.log('myMap.size :>> ', myMap.size); // 3
+        //#endregion MAP
+
+        // =================================
+        // DOM DYNAMIC FIELDS
+        // document.images
+        // document.forms
+        // document.links
+        // document.anchors
+        // document.children
+        // document.childNodes
+        // document.scripts
+        // ...
+        console.log('document.children :>> ', document.children); // HTMLCollection [html]
+        console.log('document.childNodes :>> ', document.childNodes); // NodeList(2) [<!DOCTYPE html>, html]
+        console.log('document.scripts :>> ', document.scripts); // HTMLCollection [script]
+
+
+        // =================================
+        // DOM COLLECTIONS AND LISTS
+        let elThroughId = document.getElementById('divId'); // HTMLElement
+        let elsThroughClass = document.getElementsByClassName('pClass'); // in Intellisense von ESLint steht: HTMLCollectionOf<Element>
+        console.log('elsThroughClass :>> ', elsThroughClass); // HTMLCollection(3) [p.pClass, p.pClass, p.pClass]
+
+        // Objekttypen können mit instanceof abgefragt werden
+        console.log('elsThroughClass[0] instanceof Element :>> ', elsThroughClass[0] instanceof Element); // true
+        console.log('elsThroughClass[0] instanceof HTMLElement :>> ', elsThroughClass[0] instanceof HTMLElement); // true
+        console.log('elsThroughClass[3] instanceof HTMLElement :>> ', elsThroughClass[3] instanceof HTMLElement); // false
+
+        // Elementtypen können durch nodeName abgefragt werden
+        for (const iterator of elsThroughClass) {
+            console.log('iterator.nodeName :>> ', iterator.nodeName); // P, P, P, svg                
+        }
+
+        let elsThroughTagName = document.getElementsByTagName('img');
+        console.log('elsThroughTagName :>> ', elsThroughTagName); // HTMLCollection(3) [img, img, img]
+        // wie bei document.images
+
+        for (const key in HTMLCollection.prototype) {
+            // if (Object.hasOwnProperty.call(HTMLCollection, key)) {
+            console.log('HTMLCollection[key] :>> ', HTMLCollection[key]); // 0, undefined, undefined
+            const element = HTMLCollection[key];
+            console.log('key :>> ', key); // length, item, namedItem
+            // }
+        }
+
+        for (const key in elsThroughTagName) {
+            // if (Object.hasOwnProperty.call(HTMLCollection, key)) {
+            console.log('elsThroughTagName[key] :>> ', elsThroughTagName[key]); // drei img-Objekte
+            const element = elsThroughTagName[key];
+            console.log('key :>> ', key); // length, item(), namedItem()
+            // }
+        }
+
+        // mit namedItem('id_or_name') wird auf das genannte Element zugegriffen
+        console.log('elsThroughTagName.namedItem("middleImg") :>> ', elsThroughTagName.namedItem("middleImg"));
+
+    </script>
+</body>
+
+</html>
