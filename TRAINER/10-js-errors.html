@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>JS ERRORS</h1>
+    <pre>
+        - alle Fehler haben Prop 'message'
+    </pre>
+    <script>
+        function Person(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+        const myPerson = new Person('vn', 'ln');
+
+        try {
+            myPerson = { firstName: 'vn', lastName: 'ln' }; // Uncaught TypeError: Assignment to constant variable.
+        } catch (err) {
+            console.log('err :>> ', err); // TypeError: Assignment to constant variable.
+            console.log('err.message :>> ', err.message); // Assignment to constant variable.
+            console.log('typeof err :>> ', typeof err); // object
+            console.log('err instanceof TypeError :>> ', err instanceof TypeError); // true
+        }
+
+        try {
+            throw new Error('neuer Fehler zum Testen');
+        } catch (e) {
+            console.log('e :>> ', e);
+        } finally {
+            // Wenn Fehler abgefangen ist, wird dieser Block ausgeführt?
+            // ja
+            console.log('finally'); // finally
+        }
+
+    </script>
+</body>
+
+</html>
