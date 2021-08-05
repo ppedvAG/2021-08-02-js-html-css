@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- todo #2 -->
+
+    <style>
+        fieldset {
+            width: 50%;
+        }
+    </style>
+    <form action="#" id="firstForm">
+        <h1>Datalist & Autovervollständigung</h1>
+
+        <input type="text" id="inp1" list="farben" autocomplete="on" />
+        <input type="text" id="inp2" list="farben" autocomplete="on" />
+        <datalist id="farben">
+            <option value="Rot"></option>
+            <option value="Grün"></option>
+            <option value="Blau"></option>
+        </datalist>
+        <output id="outp"></output>
+
+        <button id="btn" type="submit">OK</button>
+
+        <h1>fieldset</h1>
+        <p>Eingabe aus Input wird beim Klick auf Button in Output angezeigt</p>
+        <fieldset>
+            <legend>NAME</legend>
+            <label for="fname">VORNAME
+                <input id="fname" type="text" placeholder="Max" />
+            </label>
+
+            <label for="lname">NACHNAME
+                <input id="lname" type="text" placeholder="Mustermann" title="title test ohne pattern" />
+            </label>
+            <label for="">EMAIL
+                <input type="email" name="" id="" value="@gmail.com" pattern="^.+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                    title="Achte auf RegExp" /></label>
+
+            <button onclick="showInputValue()">zeige die Eingabe</button>
+            <!-- <button type="button" onclick="showInputValue()">zeige die Eingabe</button> -->
+        </fieldset>
+        <output id="outp"></output>
+
+        <hr />
+
+        <h1>input:color</h1>
+        <input type="color" name="clr" id="crlId" tabindex="3" />
+
+        <hr />
+
+        <h1>input:radio</h1>
+        <h3>Matrixfrage links / rechts</h3>
+        <p>Inputs von type radio sind durch Attr name verbunden</p>
+        <div>
+            <label for="left">ADD INPUTS</label><input type="radio" id="left" name="additional" />
+        </div>
+        <div>
+            <label for="right">CONTINUE</label><input type="radio" id="right" name="additional" />
+        </div>
+        <hr>
+
+        <h1>input:number</h1>
+
+        <div id="additionalDiv">
+            <input type="number" name="" id="" tabindex="1" />
+            <input type="number" name="" id="" tabindex="1" />
+        </div>
+
+        <hr />
+
+        <h1>input:checkbox</h1>
+        <h3>Pizzaextras</h3>
+        <div>
+            <label for="cheese">Käse</label>
+            <input type="checkbox" id="cheese" name="inpCheck" value="Käse" tabindex="2" />
+        </div>
+        <div>
+            <label for="salami">Salami</label>
+            <input type="checkbox" id="salami" name="inpCheck" value="Salami" />
+        </div>
+        <div>
+            <label for="mushrooms">Pilze</label>
+            <input type="checkbox" id="mushrooms" name="inpCheck" value="Pilze" />
+        </div>
+        <div>
+            <label for="pineapple">Ananas</label>
+            <input type="checkbox" id="pineapple" name="inpCheck" value="Ananas" />
+        </div>
+        <button type="button" id="btnPizza">OK</button>
+        <output id="outPizza"></output>
+
+        <hr />
+
+        <h1>input:range</h1>
+        <h3>Hotelzimmerabfrage</h3>
+        <div>
+            <label for="inpPrice">Zimmerpreis: </label>
+            <span id="minSpan"></span>
+            <input type="range" id="inpPrice" min="20" max="200" step="5" value="70" />
+            <!-- <input type="range" id="inpPrice" min="20" max="200" step="5" value="70" oninput="showPrice()"> -->
+            <span id="maxSpan"></span>
+            <span>| Ihr ausgewählter Preis: </span>
+            <output id="outpPrice"></output>
+        </div>
+
+        <hr />
+
+        <h1>min max & try catch</h1>
+        <p>
+            Beim Alter 7-16 - Kindermarathon, 17-65 - Marathon, 65-75 - Marathon mit
+            Zusatzversicherung, 75-... - Teilnahme nicht möglich
+        </p>
+        <label for="inpAge">Ihr Alter:</label>
+        <!-- Mit Attribut for bei Label und id bei input werden diese beiden 
+            Elemente verbunde. Beim Klicken auf label-Text erscheint Kursor im Input-Feld -->
+        <input type="number" id="inpAge" min="7" max="99" />
+        <button type="button" id="btnAge">OK</button>
+        <output id="outInfo"></output>
+
+        <hr>
+
+        <h2>Datumvalidierung</h2>
+
+        <fieldset id="person">
+            <legend>Person</legend>
+            <div class="inpItem"><input id="inpVNameId" type="text" placeholder="Vorname"></div>
+            <div class="inpItem"><input id="inpNNameId" type="text" placeholder="Nachname"></div>
+            <div class="inpItem"><input id="inpGebDatId" type="date" title="Geburtsdatum"></div>
+        </fieldset>
+        <fieldset id="pass">
+            <legend>Pass</legend>
+            <div class="inpItem"><input id="inpPassNrId" type="text" placeholder="ReisepassNr" pattern="^[A-Z0-9]{6,}$">
+            </div>
+            <div class="inpItem"><input id="inpBehördeId" type="text" placeholder="Ausstellende Behörde"></div>
+            <div class="inpItem"><label for="inpAusstDatId">Ausstellungsdatum<input id="inpAusstDatId" type="date"
+                        title="Ausstellungsdatum"></label> </div>
+            <div class="inpItem"><label for="inpAblDatId">Ablaufsdatum<input id="inpAblDatId" type="date"
+                        title="Ablaufsdatum"></label> </div>
+            <div class="inpItem"><input type="button" id="btnValidatePassId" value="OK"></div>
+            <div id="infoMessageDiv"></div>
+
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <h2>DYNAMISCHES FORMULAR</h2>
+    <h3>mit html string</h3>
+    <form id="dynContainer">
+        <div class="fundGegenstand">
+            <input type="text"><input type="text">
+        </div>
+        <!-- hier entstehen neue felder -->
+        <button id="btnMoreId" type="button">weitere Gegenstände</button>
+    </form>
+
+
+
+
+    <script>
+
+        /* /////////////DATALIST////////////// */
+        btn.addEventListener("click", handleSubmitBtnClick);
+
+        function handleSubmitBtnClick() {
+            outp.textContent = inp1.value + " " + inp2.value;
+            console.log('inp1.validity :>> ', inp1.validity);
+            console.log('firstForm :>> ', firstForm);
+
+            // outp.textContent = 'output ist hier';
+        }
+        firstForm.addEventListener("submit", handleSubmit);
+        function handleSubmit() {
+            console.log("submit ausgelöst");
+        }
+        /* /////////////fieldset////////////// */
+        function showInputValue() {
+            let text;
+            text = fname.value + " " + lname.value;
+            outp.textContent = text;
+        }
+
+        /* ////////////input:range//////////// */
+        minSpan.textContent = inpPrice.min;
+        maxSpan.textContent = inpPrice.max;
+        function showPrice() {
+            // console.log(inpPrice); // ist ein Objekt, welches dem HTML-Element entspricht
+            outpPrice.textContent = inpPrice.value;
+        }
+        inpPrice.addEventListener("input", showPrice, true);
+        showPrice();
+
+        /* ////////////input:checkbox//////////// */
+        btnPizza.addEventListener("click", getSelected, true);
+        function getSelected() {
+            outPizza.textContent = "";
+            // console.log('hallo aus getSelected');
+            const extrasArr = document.getElementsByName("inpCheck"); // NodeList
+            console.log(extrasArr);
+            // extrasArr.forEach(function (el) { return outPizza.innerText += el.checked; });
+            extrasArr.forEach(el => {
+                if (el.checked === true) {
+                    outPizza.textContent += el.value + " ";
+                }
+            });
+        }
+
+        /* ////////////try catch//////////// */
+        function trycatch() {
+            let inpValue = inpAge.value;
+            let errorMessage;
+            console.log(typeof inpValue);
+            try {
+                /* beim leeren Input und beim Text kommt ein leeres String zurück */
+                if (inpValue === "") {
+                    throw "Bitte geben Sie eine Zahl ein";
+                }
+                if (inpValue < 7) {
+                    throw "zu jung";
+                }
+                if (inpValue > 75) {
+                    throw "Teilnahme nicht möglich";
+                }
+            } catch (errorMessage) {
+                outInfo.textContent = "Error Message: " + errorMessage;
+            } finally {
+                if (inpValue >= 7 && inpValue <= 16) {
+                    outInfo.textContent = "Willkommen beim Kindermarathon";
+                }
+                if (inpValue >= 17 && inpValue <= 65) {
+                    outInfo.textContent = "Willkommen beim Marathon";
+                }
+                if (inpValue >= 66 && inpValue <= 75) {
+                    outInfo.textContent =
+                        "Willkommen beim Marathon, bitte beachten Sie die Anforderungen für Senioren";
+                }
+            }
+        }
+        btnAge.addEventListener("click", trycatch, true);
+
+        /* /////////////DATUMVALIDIERUNG////////////// */
+        btnValidatePassId.addEventListener("click", myFunction);
+
+        function myFunction() {
+            console.info('Geburtsdatum')
+            console.log(inpGebDatId.valueAsNumber)
+            console.info('Ausstellungsdatum')
+            console.log(inpAusstDatId.valueAsNumber)
+            console.info('Ablaufsdatum')
+            console.log(inpAblDatId.valueAsNumber)
+
+            let errMessage;
+            let twenty = 6.307e+11; //20 jahre
+
+            try {
+                if (inpGebDatId.valueAsNumber > inpAusstDatId.valueAsNumber) {
+                    throw 'ausstellungsdatum jünger als geburtsdatum'
+                }
+                if (inpAusstDatId.valueAsNumber > inpAblDatId.valueAsNumber) {
+                    throw 'ablaufdatum jünger als ausstellungsdatum'
+                }
+                if ((inpAblDatId.valueAsNumber - inpAusstDatId.valueAsNumber) > twenty) {
+                    throw 'pass darf nicht länger als 20 jahre älter sein'
+                }
+
+            }
+            catch (errMessage) {
+                infoMessageDiv.textContent = "Error Message: " + errMessage;
+                infoMessageDiv.style.color = "red";
+                console.log("Error Message: " + errMessage);
+            }
+            finally {
+                /* das überschreibt die Fehlermeldung */
+                infoMessageDiv.innerHTML = "Danke für Ihre Angaben" + "&#127849";
+                infoMessageDiv.style.color = "green";
+            }
+        }
+
+        /* /////////////DYNAMISCHES FORMULAR////////////// */
+        btnMoreId.addEventListener("click", handleMoreBtnClick);
+        function handleMoreBtnClick() {
+            // console.log(document.forms[1].lastElementChild);
+            let newDiv = document.createElement('div');
+            // let textForDiv = document.createTextNode("test test test");
+            newDiv.innerHTML = `
+            <input type="text">
+            <input type="text">
+            `;
+            let dynForm = document.forms[1];
+            dynForm.insertBefore(newDiv, dynForm.childNodes[dynForm.children.length]);
+            console.log(document.forms[1]);
+            /* Die neue Div ist unter  */
+        }
+    </script>
+</body>
+</html>

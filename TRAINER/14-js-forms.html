@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-JS-FORMS</title>
+</head>
+<body>
+    <h1>14-JS-FORMS</h1>
+    <pre>
+        HTMLFormElement - Tag 'form'
+
+        Absenden von Daten wird durch Event 'submit' getriggert
+            vorm Absenden werden alle Inputs geprüft
+
+        Beachte: Buttons sind per default vom Typ 'submit'.
+        Beachte: zwei Tags für Buttons - button und input. 
+
+        Action beim 'form' - beinhaltet url zu der Datei, die die Daten vom Formular bearbeiten muss.
+
+        Inputs haben Eigenschaft 'validity' oder 'valid'.
+            ValidityState {valueMissing: false, typeMismatch: false, patternMismatch: false, tooLong: false, tooShort: false, …}
+                badInput: false
+                customError: false
+                patternMismatch: false
+                rangeOverflow: false
+                rangeUnderflow: false
+                stepMismatch: false
+                tooLong: false
+                tooShort: false
+                typeMismatch: false
+                valid: true
+                valueMissing: false
+
+        Hidden Inputs werden genutzt, um durch die Daten zum Server zu schicken, die der Benutzer nicht unbedingt sehen muss.
+        Diese Daten werden dynamisch in die Hidden-Inputs reingeschrieben.
+        Warum schickt man die Daten zum Server über Hidden Inputs und nicht durch JSON, XML etc?
+        Weil Json zu bauen ist ein extra Schritt. Und alle Einträge aus Inputs (auch von hidden) werden durch die URL an den Server geschickt.
+        URL Beispiel: _urlVomForm_/?_key_=_value&_key_=_value&.....
+        z.B. 
+        https://myonlinemarketing.ch/?utm_source=ppdev&utm_medium=cpc&utm_campaign=Test-JavaScript-Kurs 
+        
+    </pre>
+    <h2>Submit</h2>
+    <!-- URL nach dem Submit event:
+    file:///D:/D_Dokumente/k_js_html_css_jq/2021-08-02-VN-js-html-css-VC/2021-08-02-js-html-css/TRAINER/dataProcessing.js?
+-->
+    <!-- <form action="dataProcessing.js" onsubmit="handleSubmit"> -->
+    <form action="#" onsubmit="handleSubmit()">
+        <input type="submit" value="Submit Input">
+        <button type="submit">Submit Button</button>
+    </form>
+<!--     <form action="" method="get"></form>
+    <form action="" method="post"></form> -->
+
+    <h2>input:hidden</h2>
+    <input type="hidden" name="inpHidden" id="inpHidden" value="value in hidden input">
+
+    <script>
+        function handleSubmit(ev) {
+            console.log('handleSubmit');
+            console.log('ev :>> ', ev);
+        }
+
+        // hidden inputs
+
+// value bei <button>?
+    </script>
+</body>
+</html>
