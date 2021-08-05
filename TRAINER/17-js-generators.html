@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-JS-GENERATORS</title>
+</head>
+
+<body>
+    <h1>17-JS-GENERATORS</h1>
+    <pre>
+        Generatoren sind Funktionen
+        anstatt von return wird yield angewendet
+        im Unterschied zu return kann yield-Ausdruck mehrmals ausgeführt werden
+        Rückgabe vom Generator muss zu einem Array umgewandelt werden, sonst bekommen man den Generator selbst
+    </pre>
+    <script>
+        // mit mehreren yield-Ausdrücken
+        function* zähleBisDrei() {
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+        let result = zähleBisDrei();
+        console.log('result :>> ', result);
+        /* 
+        zähleBisDrei
+        [[GeneratorLocation]]: 17-js-generators.html:16
+        [[Prototype]]: Generator
+        [[GeneratorState]]: "suspended"
+        [[GeneratorFunction]]: ƒ* zähleBisDrei()
+        [[GeneratorReceiver]]: Window
+        [[Scopes]]: Scopes[3]
+        */
+        console.log('[...result] :>> ', [...result]); // (3) [1, 2, 3]
+
+        // mit einem yield-Ausdruck
+        function* zähleBis(zahl) {
+            while (zahl > 0) {
+                yield zahl--;
+            }
+        }
+        console.log('[...zähleBis(4)] :>> ', [...zähleBis(4)]); // (4) [4, 3, 2, 1]
+
+        // mit return
+        function* zähleBisV2(zahl) {
+            while (zahl > 0) {
+                yield zahl--;
+                if (zahl == 2) {
+                    // return 'dd'; // Beenden des Generators: ja, aber 'dd' wird nicht zurückgegeben
+                    return 'dd';
+                } 
+            }            
+        }
+        console.log('zähleBisV2(4) :>> ', zähleBisV2(4)); // zähleBisV2 {<suspended>}
+        console.log('[...zähleBisV2(4)] :>> ', [...zähleBisV2(4)]); // (4) [4, 3, 2, 1]
+
+
+        // next()
+        let gener = zähleBisDrei();
+        console.log('gener.next() :>> ', gener.next()); // {value: 1, done: false}, Beachte: false - nicht zu Ende ausgeführt
+
+    </script>
+</body>
+
+</html>
