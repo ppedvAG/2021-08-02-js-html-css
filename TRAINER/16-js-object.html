@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-JS-OBJECT</title>
+</head>
+
+<body>
+    <h1>16-JS-OBJECT</h1>
+    <pre>
+        - Objekt Object steht an der Spitze von JS Object Model
+        - Alle weiteren Objekte und Konstrukte sind von 'Object' abgeleitet
+        - sogar Primitiven können auf Methoden von ihren Wrapping-Objects zuzugreifen
+        - Objekte haben Konstruktoren
+        - Objekte haben Prototypen (JS Variante für Klassen / Interfaces / Vererbung)
+
+        Zum Anlegen eigener Objekte siehe 09-js-objects.html
+
+
+    </pre>
+    <script>
+
+        //#region ANONYMOUS OBJECT INTRO
+        let anonymousObject = {
+            prop1: 'value prop1',
+            prop2: 'value prop2'
+        }
+        console.log('anonymousObject :>> ', anonymousObject); // {prop1: "value prop1", prop2: "value prop2"}
+        // Alle anonymen Objekte heißen 'Object' und sind vom Urobjekt 'Object' abgeleitet.
+        /* 
+        Object
+        prop1: "value prop1"
+        prop2: "value prop2"
+        [[Prototype]]: Object
+        constructor: ƒ Object()
+        hasOwnProperty: ƒ hasOwnProperty()
+        isPrototypeOf: ƒ isPrototypeOf()
+        propertyIsEnumerable: ƒ propertyIsEnumerable()
+        toLocaleString: ƒ toLocaleString()
+        toString: ƒ toString()
+        valueOf: ƒ valueOf()
+        __defineGetter__: ƒ __defineGetter__()
+        __defineSetter__: ƒ __defineSetter__()
+        __lookupGetter__: ƒ __lookupGetter__()
+        __lookupSetter__: ƒ __lookupSetter__()
+        get __proto__: ƒ __proto__()
+        set __proto__: ƒ __proto__()
+        */
+        //#endregion ANONYMOUS OBJECT INTRO
+
+
+        //#region PROTOTYPE
+        // Prototyp
+        // bei einem anonymen Objekt
+        console.log('anonymousObject.prototype :>> ', anonymousObject.prototype); // undefined
+        // console.log('anonymousObject[[Prototype]] :>> ', anonymousObject[[Prototype]]); // 16-js-object.html:52 Uncaught ReferenceError: Prototype is not defined
+
+        // bei einem eingebauten Objekt
+        console.log('String.prototype :>> ', String.prototype); // String {"", constructor: ƒ, anchor: ƒ, big: ƒ, blink: ƒ, …}
+        //#endregion PROTOTYPE
+        
+
+        //#region OBJECT METHODS
+  
+        // eigene, nicht vererbte Eigenschaften
+        // hasOwnProperty: ƒ hasOwnProperty()
+        // 
+        for (const key in anonymousObject) {
+            if (Object.hasOwnProperty.call(anonymousObject, key)) {
+                const element = anonymousObject[key];
+                console.log('element :>> ', element); // value prop1, value prop2                
+            }
+        }
+        console.log('anonymousObject.hasOwnProperty("prop1") :>> ', anonymousObject.hasOwnProperty('prop1')); // true
+
+
+        class Todo {
+            completed = true;
+        }
+        console.log('Todo.hasOwnProperty("completed") :>> ', Todo.hasOwnProperty("completed")); // false
+        let todo = new Todo();
+        todo.completed = false;
+        console.log('todo.hasOwnProperty("completed") :>> ', todo.hasOwnProperty("completed")); // true
+
+        
+        // Auf die Props von vordefinierten Objekten und ihrer Instanzen kann man damit nicht zugreifen
+        for (const key in Number.prototype) {
+            // if (Object.hasOwnProperty.call(Number, key)) {
+                console.log(`key: ${key}: ${Number[key]}`);                
+            // }
+        }
+        console.log('Number.hasOwnProperty("toFixed") :>> ', Number.hasOwnProperty("toFixed")); // false
+        let myNumber = new Number(6);
+        for (const key in myNumber) {
+            // if (Object.hasOwnProperty.call(myNumber, key)) {
+                const element = myNumber[key];
+                console.log('element :>> ', element);                
+            // }
+        }
+
+
+        // isPrototypeOf: ƒ isPrototypeOf()
+        // propertyIsEnumerable: ƒ propertyIsEnumerable()
+        // toLocaleString: ƒ toLocaleString()
+        // toString: ƒ toString()
+        // valueOf: ƒ valueOf()
+        
+
+        // static Methods:
+        // freeze()
+
+        // values() - liefert Array aus Values
+        // bei Instanzen einer Klasse?
+        // funktioniert
+        console.log('Object.values(todo) :>> ', Object.values(todo)); // [false]
+
+        // bei Definitionen der Klasse oder eines Objekts?
+        // funktioniert nicht 
+        console.log('Object.values(Todo) :>> ', Object.values(Todo)); // []
+
+        // bei anonymen Objekten?
+        // ja
+        console.log('Object.values(anonymousObject) :>> ', Object.values(anonymousObject)); // (2) ["value prop1", "value prop2"]
+
+        console.log('Object.keys(todo) :>> ', Object.keys(todo)); // ["completed"]
+        
+
+        // defineProperty()
+        // create
+        // setPrototypeOf
+        //#endregion OBJECT METHODS
+      
+
+
+        // ALLE KEYS / PROPNAMES
+        // bei anonymen Objekten
+        console.log('Object.keys(anonymousObject) :>> ', Object.keys(anonymousObject)); // (2) ["prop1", "prop2"]
+        // bei Definitionen von Klassen oder Objekten
+        console.log('Object.getOwnPropertyNames(Todo) :>> ', Object.getOwnPropertyNames(Todo)); // (3) ["length", "prototype", "name"]
+        console.log('Object.getOwnPropertyNames(Number) :>> ', Object.getOwnPropertyNames(Number)); // ["length", "name", "prototype", "isFinite", "isInteger", "isNaN", "isSafeInteger", "parseFloat", "parseInt", "MAX_VALUE", "MIN_VALUE", "NaN", "NEGATIVE_INFINITY", "POSITIVE_INFINITY", "MAX_SAFE_INTEGER", "MIN_SAFE_INTEGER", "EPSILON"]
+        
+
+        // OBJEKT DARGESTELLT ALS STRING
+        // toString() liefert [object Object], Workaround kann JSON sein:
+        let objAsString = JSON.stringify(anonymousObject);
+        console.log('objAsString :>> ', objAsString); // {"prop1":"value prop1","prop2":"value prop2"}
+
+    </script>
+</body>
+
+</html>
