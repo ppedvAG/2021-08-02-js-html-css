@@ -58,13 +58,25 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 
 ## M005 | JS FLOW CONTROLS
 
-## M006 | DATA STRUCTURES
+## M006 | FUNCTIONS
 
 ## M007 | CSS GRID
 
 ## M008 | CSS UNITS
 
 ## M009 | JS OBJECTS
+
+## M010 | JS ERRORS
+
+## M011 | JS FOR HTML ELEMENTS
+
+## M012 | JS STRUCTURES
+
+## M013 | EVENTS
+
+## M014 | FORMS
+
+## M015 | CLASSES
 
 AGENDA auf ppedv.de
 
@@ -76,13 +88,23 @@ AGENDA auf ppedv.de
 - [x] JavaScript: Kontrollstrukturen
 - [x] JavaScript: Funktionen
 - [x] JavaScript: Zugriff auf HTML-Dokumente
-- [ ] JavaScript: Objekte und Objektmodell (DOM)
-- [ ] JavaScript: Ereignisse
-- [ ] Formulare mit JavaScript
-- [ ] Formulare in HTML erstellen
+- [x] JavaScript: Objekte, JS Objektmodell und DocumentObjektmodell (DOM)
+- [x] JavaScript: Ereignisse
+- [x] Formulare mit JavaScript
+- [x] Formulare in HTML erstellen
+- [ ] Klassen
+- [ ] Cookies
+- [ ] JavaScript APIs verwenden
+  - [ ] geolocation
+- [ ] Promises, async await
+- [ ] service workers
+- [ ] window.history
+- [ ] generators
+- [ ] Video Lautstärke
+
+vom kleineren Interesse
+
 - [ ] HTML5 Vertiefung
 - [ ] Medien in HTML integrieren
 - [ ] CSS3 Vertiefung
 - [ ] Layout Grundlagen (In Agenda: CSS3, Kollege nutzt jQuery UI, möglich wäre noch Bootstrap, Sass)
-- [ ] Cookies
-- [ ] JavaScript APIs verwenden
