@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15-JS-CLASSES</title>
+</head>
+
+<body>
+    <h1>15-JS-CLASSES</h1>
+    <pre>
+        ES6 classes are syntactical sugar to provide a much simpler and clearer syntax to create objects and deal with inheritance.
+
+        MDN Docs https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+        Spec https://tc39.es/ecma262/#sec-class-definitions
+    </pre>
+
+    <script>
+
+
+
+        // KLASSE OHNE KONSTRUKTOR
+        class MyClass {
+            prop1 = 'value1';
+            prop2 = 'value2';
+        }
+        let myClass = new MyClass(); // auto Konstruktor
+        console.log('myClass.prop1 :>> ', myClass.prop1);
+
+        // KLASSE MIT definiertem KONSTRUKTOR
+        class MyClass1 {
+            aktDatum;
+            constructor() {
+                this.aktDatum = new Date();
+            }
+        }
+        let myClass1_1 = new MyClass1();
+        console.log('myClass1_1.aktDatum :>> ', myClass1_1.aktDatum.getTime()); // 1628158486812
+
+        let myClass1_2 = new MyClass1();
+        console.log('myClass1_2.aktDatum :>> ', myClass1_2.aktDatum.getTime()); // 1628158486821 - 9 Milisekunden, um zweite Instanz anzulegen
+
+
+        // KONSTRUKTOR MIT PARAMETERN
+        class Person {
+            // beachte: die Props können erst im Ctor definiert werden
+            constructor(firstName, lastName) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+            }
+        }
+        let myPerson = new Person('max', 'müller');
+        console.log('myPerson.firstName :>> ', myPerson.firstName); // max
+
+
+        // CLASS EXTENSIONS
+        // JS Klassen können nicht von mehreren Klassen erben
+        class Student extends Person {
+            constructor(firstName, lastName, faculty) {
+                super(firstName, lastName);
+                this.faculty = faculty;
+            }
+        }
+        let myStudent = new Student('Fauler', 'Stefan', 'social sciences');
+        console.log('myStudent.faculty :>> ', myStudent.faculty); // social sciences
+        console.log('myStudent instanceof Student :>> ', myStudent instanceof Student); // true
+        console.log('myStudent instanceof Person :>> ', myStudent instanceof Person); // true
+
+
+        // MODIFIER
+        // in C#: public, private, static, readonly, abstract, protected, virtuell, internal
+        // in JS: 
+        /* 
+        public - ja
+        private - ja
+        static - ja
+        readonly - nur bei Objekten und mit freeze() an Objekten
+        abstract - nur durch Mis-Ins
+        rest - nicht unterstützt
+         */
+
+
+        // public - Members ohne Modifier sind public
+        // Beispiel: siehe Klasse 'Person'
+
+
+        // private
+        // Konvention für Bezeichner - fängt mit underscore an. z.B. #_adresse
+        class PrivatePerson {
+            #adresse = {
+                strasse: '',
+                hausnummer: 0,
+                plz: 0,
+                stadt: '',
+                land: ''
+            };
+            constructor(str, hausnr, plz, stadt, land){
+                this.#adresse.strasse = str;
+                this.#adresse.hausnummer = hausnr;
+                this.#adresse.plz = plz;
+                this.#adresse.stadt = stadt;
+                this.#adresse.land = land;
+            }
+            istDeutsch() {
+                return this.#adresse.land === 'deutschland' ? true : false;
+            }
+        }
+        let privatePerson = new PrivatePerson("hauptstr", 1, 10000, "leipzig", "deutschland");
+        console.log('privatePerson.adresse :>> ', privatePerson.adresse); // undefined
+        console.log('privatePerson.istDeutsch() :>> ', privatePerson.istDeutsch()); // true
+
+
+        // static
+        class PersonMitStatic extends Person {
+            constructor(firstName, lastName) {
+                super (firstName, lastName);
+            }
+            static checkName(person, firstname) {                
+                let firstLetter = person.firstName.substring(0, 1);                
+                person.firstName = person.firstName.replace(firstLetter, firstLetter.toUpperCase()); // nur der erste Treffer wird ersetzt
+                return person.firstName;
+            }
+
+        }
+        let personMitStatic = new PersonMitStatic('anna', 'mermagen');
+        // console.log('personMitStatic.checkName("anna") :>> ', personMitStatic.checkName('anna')); // TypeError: personMitStatic.checkName is not a function
+        console.log('PersonMitStatic.checkName("anna") :>> ', PersonMitStatic.checkName(personMitStatic, 'anna')); // 
+
+
+        // readonly
+        // gibt es nicht in JS. Dafür aber in TS. Oder Instanzen einfrieren mit freeze()
+        console.log('"object"[0] :>> ', "object"[0]);
+        function ObjReadOnly(test) {            
+            this.test = test;
+        }
+        let objReadOnly = new ObjReadOnly('bla');
+        Object.freeze(objReadOnly);        
+        objReadOnly.test = 'test read only';
+        console.log('objReadOnly.test :>> ', objReadOnly.test);
+
+
+        // abstract
+        // nicht in JS. Dafür in TS. 
+        // Oder ein Mix-In bauen.
+        let extendClass = (Superklasse) => 
+            class extends Superklasse {
+                test() { }
+        };
+        let extendClassMore = (Superklasse) => 
+            class extends Superklasse {
+                anotherMethod() { }
+        };
+        class SuperKlasse { };
+        class SubKlasse extends extendClass(extendClassMore(SuperKlasse)) {};
+
+
+        // GETTER
+        // privatePerson mit getter adresse
+        class PrivatePerson1 {
+            #adresse = {
+                strasse: '',
+                hausnummer: 0,
+                plz: 0,
+                stadt: '',
+                land: ''
+            };
+            constructor(str, hausnr, plz, stadt, land){
+                this.#adresse.strasse = str;
+                this.#adresse.hausnummer = hausnr;
+                this.#adresse.plz = plz;
+                this.#adresse.stadt = stadt;
+                this.#adresse.land = land;
+            }
+            get adresse() {                
+                return this.#adresse.land + ' mehr Infos kriegen Sie nicht';
+            }
+        }
+        let privatePerson1 = new PrivatePerson1("hauptstr", 1, 10000, "leipzig", "deutschland");
+        console.log('privatePerson1.adresse :>> ', privatePerson1.adresse);
+
+
+        // SUPER
+        // z.B. beim Aufrufen von Methoden der Superklasse in der Subklasse
+
+
+    </script>
+</body>
+
+</html>
