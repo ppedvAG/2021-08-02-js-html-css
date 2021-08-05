@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-JS-EVENTS</title>
+    <style>
+        [id] {
+            border: thick solid salmon;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>13-JS-EVENTS</h1>
+    <pre>
+        DOM Events - Events in UI
+
+        bubbling
+
+        EventTarget.removeEventListener('eventtype', handlername)
+        Was tun, wenn ein anonymer Handler hinzugefügt wurde?
+
+        Event.preventDefault()
+            siehe Forms
+
+        Eventtypen:
+        Event
+            UIEvent
+                MouseEvent
+                    PointerEvent
+
+        ==========
+
+        JS Events - Events im Lebenszyklus von JS Objekten
+            siehe serviceWorker (message, fetch, register)
+    </pre>
+    
+    <h2>Path & Target</h2>
+
+    <div id="divId">division
+        <p id="pId">paragraph
+            <span id="spanId">span</span>
+        </p>
+    </div>
+
+    <h2>Bubbling</h2>
+    <div id="divId2">division
+        <p id="pId2">paragraph
+            <span id="spanId2">span</span>
+        </p>
+    </div>
+
+    <script>
+        // Path & Event Target
+        function clickHandler(ev) {
+            console.log('ev :>> ', ev);  // PointerEvent {isTrusted: true, pointerId: 0, width: 1, height: 1, pressure: 0, …}
+            console.log('ev.target :>> ', ev.target); // span
+            console.log('ev.path :>> ', ev.path); // (7) [span#spanId, p#pId, div#divId, body, html, document, Window]        
+        }
+        // Beim auf Span wird jetzt der Handler zweimal ausgeführt
+        spanId.addEventListener('click', clickHandler);
+        document.addEventListener('click', clickHandler);
+
+        // Ist Event Target das Objekt, zu welchem der Event Handler hinzugefügt wurde?
+        // nein: beim Klick auf pre, ist event target - pre
+
+        // deleting Handlers
+        // click Event wird nur bei Span und nicht bei document abgefangen
+        document.removeEventListener('click', clickHandler);
+
+
+        // Bubbling
+        function changeBubblingBySpan(ev) {
+            // Click-Event an Elementen hinter dem Spanelement wird nicht abgefangen
+            ev.stopPropagation();
+            console.log('ev.bubbles :>> ', ev.bubbles);
+            // ev.bubbles = false;
+            console.log('click in bubbling');         
+        }        
+        spanId2.addEventListener('click', changeBubblingBySpan)
+
+
+        // let myPointerEvent = new PointerEvent(); // var PointerEvent: new (type: string, eventInitDict?: PointerEventInit) => PointerEvent
+        // myMouseEvent.bubbles = false;
+
+
+
+
+    </script>
+</body>
+</html>
