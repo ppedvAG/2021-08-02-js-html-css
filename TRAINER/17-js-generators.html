@@ -60,7 +60,10 @@
 
         // next()
         let gener = zähleBisDrei();
-        console.log('gener.next() :>> ', gener.next()); // {value: 1, done: false}, Beachte: false - nicht zu Ende ausgeführt
+        console.log('gener.next() :>> ', gener.next()); // {value: 1, done: false}
+        console.log('gener.next() :>> ', gener.next()); // {value: 2, done: false}
+        console.log('gener.next() :>> ', gener.next()); // {value: 3, done: false}
+        console.log('gener.next() :>> ', gener.next()); // {value: undefined, done: true}
 
     </script>
 </body>
