@@ -86,6 +86,10 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 
 ## M019 | ASYNC AWAIT
 
+## M020 | JS APIS
+
+## M021 | SERVICE WORKER
+
 AGENDA auf ppedv.de
 
 - [x] Einführung in JavaScript
@@ -103,14 +107,23 @@ AGENDA auf ppedv.de
 - [x] Klassen
 - [x] generators
 - [x] document.cookie
-- [ ] async await
-- [ ] Promises,
-- [ ] service workers
-- [ ] window.history
+- [x] async await
+- [ ] Promises
 - [ ] JavaScript APIs verwenden
-  - [ ] geolocation
-- [ ] Video Lautstärke, embedded Content
+  - [ ] history
+  - [ ] navigator
+  - [ ] navigator.geolocation
+  - [ ] screen
+  - [ ] location
+- [ ] service workers
 - [ ] Unterschied zu TS, React, NG, jQ, ( jQ UI)
+- [ ] Video Lautstärke, embedded Content
+
+Ü evtl.
+
+- [ ] Storage für Todos
+- [ ] cookie für user in todoapp
+
 
 vom kleineren Interesse
 
