@@ -119,20 +119,17 @@
         // Neuer Werte hinter 'key=' ändert den Wert bei dem key
         document.cookie = `name=value4`; // 
         document.cookie = `key3=value3; max-age=3`; // max-age muss in Sekunden angegeben werden. 2021-08-06T09:10:34.293Z
-        document.cookie = `key4=value3; expires=2`; // expires ist veraltet, stattdessen max-age
+        document.cookie = `key4=value3;expires=1000`; // expires ist veraltet, stattdessen max-age
         document.cookie = "ssasdfasdfadsfasdf"; // ändert den Wert vom String ohne 'key=value;' Syntax
         document.cookie = ''; // löscht nicht die vorherigen strings
         document.cookie = undefined; // vom String ohne 'key=value;' Syntax zu undefined
         // document.cookie = null; // vom String ohne 'key=value;' Syntax zu null 
         // document.cookie = {}; // vom String ohne 'key=value;' Syntax zu [object Object]
-
-        
-
-
         
 
         // OBJEKT 'CACHES'
         // INDEXEDDB
+
     </script>
 
 <h2>COOKIES</h2>
@@ -147,7 +144,8 @@
     //nachschauen in Web-Speicher im Developer Tool
     function setCookie(cname, cvalue, exdays) {
         var d = new Date();
-        out1.textContent = d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        d = d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));        
+        document.getElementById('out1').textContent = d;
         var expires = "expires=" + d.toUTCString();
         out2.textContent = expires; //expires=Fri, 17 May 2019 14:18:22 GMT
         var myCookie = cname + "=" + cvalue + ";" + expires + ";path=/";
@@ -181,7 +179,7 @@
     }
 
     function checkCookie() {
-        var user = getCookie("username");
+        let user = getCookie("username");
         if (user != "") {
             alert("Welcome again " + user);
         } else {

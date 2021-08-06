@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19-js-async-await</title>
+</head>
+
+<body>
+    <h1>19-js-async-await</h1>
+    <pre>
+        mit await kann man die späteren Anweisungen im Code auf ein Ergebnis warten lassen
+        Funktion, wo await eingesetzt wird, muss mit async deklariert werden.
+
+    </pre>
+    <script>
+        // fetch('https://jsonplaceholder.typicode.com/users')
+        //     .then(response => response.json())
+        //     .then(json => console.log(json)) // Array(10)
+
+
+
+
+        // function showResult() { // Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
+        async function showResult() { // Uncaught SyntaxError: await is only valid in async functions and the top level bodies of modules
+            console.log('Ausgabe0 - showResult start');
+            let etwas = fetch('https://jsonplaceholder.typicode.com/users');
+            console.log('Ausgabe1 - etwas :>> ', etwas); // Promise {<pending>}
+
+            let etwasNachThen = await etwas.then(antwortVomServer => { // Methode then() packt die Inhalte vom Promise aus
+                console.log('Ausgabe2 - antwortVomServer :>> ', antwortVomServer); // Response Objekt
+                // diese Ausgabe in die Konsole kommt als letzte von allen
+                return antwortVomServer;
+            })
+
+            console.log('Ausgabe3 - etwasNachThen :>> ', etwasNachThen); // Promise {<pending>}, return von then() wird wieder als Promise zurückgegeben
+
+            console.log('Ausgabe4 - showResult ende');
+            // etwasNachThen.then(inhalt => inhalt.json())
+            return etwasNachThen;
+        }
+        let result = showResult();
+        console.log('Ausgabe5 - result :>> ', result);
+        result
+            .then(response => response.json())
+            .then(json => console.log('Ausgabe6 - json :>> ', json)) // (10) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+    </script>
+</body>
+
+</html>

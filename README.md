@@ -78,6 +78,14 @@ Nachdem du ein Repo für ein konkretes Datum anhand von diesem Template erstellt
 
 ## M015 | CLASSES
 
+## M016 | OBJECT OBJECT
+
+## M017 | GENERATORS
+
+## M018 | WEB STORAGE
+
+## M019 | ASYNC AWAIT
+
 AGENDA auf ppedv.de
 
 - [x] Einführung in JavaScript
@@ -92,15 +100,17 @@ AGENDA auf ppedv.de
 - [x] JavaScript: Ereignisse
 - [x] Formulare mit JavaScript
 - [x] Formulare in HTML erstellen
-- [ ] Klassen
-- [ ] Cookies
-- [ ] JavaScript APIs verwenden
-  - [ ] geolocation
-- [ ] Promises, async await
+- [x] Klassen
+- [x] generators
+- [x] document.cookie
+- [ ] async await
+- [ ] Promises,
 - [ ] service workers
 - [ ] window.history
-- [ ] generators
-- [ ] Video Lautstärke
+- [ ] JavaScript APIs verwenden
+  - [ ] geolocation
+- [ ] Video Lautstärke, embedded Content
+- [ ] Unterschied zu TS, React, NG, jQ, ( jQ UI)
 
 vom kleineren Interesse
 
